@@ -1,0 +1,39 @@
+/* README
+ *
+ * Copyright 2009-2012 Nixotic Design
+ *
+ * This file is part of Nixotic gEDA-tools.
+ *
+ * Nixotic gEDA-tools is free software: you can redistribute it and/or modify
+ * it under the terms of the Lesser GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Nixotic gEDA-tools is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * Lesser GNU General Public License for more details.
+ *
+ * You should have received a copy of the Lesser GNU General Public License
+ * along with Nixotic gEDA-tools.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+This is a collection of scripts and so forth that I have found helpful for my gEDA workflow.
+
+
+These tools may presuppose the following directory structure however you may be able to modify them to suit your own setup.
+
+project-dir/
+project-dir/Makefile  
+project-dir/gitignore
+project-dir/sch/  
+procect-dir/sch/gafrc
+project-dir/sch/gschemrc
+project-dir/sch/gnetlistrc
+project-dir/sch/subcircuits/
+project-dir/sch/sym/
+project-dir/pcb/
+project-dir/release/
+
+The tools also assume you are using a git repository to track your files.

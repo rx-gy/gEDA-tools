@@ -1,0 +1,8 @@
+(log-window "later")
+(middle-button "repeat")
+(third-button "mousepan")
+(load-from-path "pcb.scm")
+(output-color "enabled")
+(image-color "enabled")
+(load (build-path geda-rc-path "print-colormap-lightbg"))
+

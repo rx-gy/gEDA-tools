@@ -1,0 +1,10 @@
+.gitignore
+fpgen.py
+*~
+*.save
+*.backup
+datasheets/
+*fp-
+*pcb-
+*#
+*.csv

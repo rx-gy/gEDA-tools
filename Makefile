@@ -33,7 +33,7 @@ IMG=$(OUT)/img
 PCB=pcb
 SCH=sch
 SS=subcircuits
-NAME=SRS101
+NAME=projectName
 
 
 COLORS=--layer-color-1 '\#ff0000' --layer-color-2 '\#ff0000' --layer-color-3 '\#0000ff' --layer-color-4 '\#0000ff' --layer-color-5 '\#00868b' --layer-color-6 '\#228b22'

@@ -1,40 +1,39 @@
- # Makefile
- #
- # Copyright 2009-2012 Nixotic Design
- #
- # This file is part of Nixotic gEDA-tools.
- #
- # Nixotic gEDA-tools is free software: you can redistribute it and/or modify
- # it under the terms of the Lesser GNU General Public License as published by
- # the Free Software Foundation, either version 3 of the License, or
- # (at your option) any later version.
- #
- # Nixotic gEDA-tools is distributed in the hope that it will be useful,
- # but WITHOUT ANY WARRANTY; without even the implied warranty of
- # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- # Lesser GNU General Public License for more details.
- #
- # You should have received a copy of the Lesser GNU General Public License
- # along with Nixotic gEDA-tools.  If not, see <http://www.gnu.org/licenses/>.
- 
- # See README for directory structure information
-
- # To use the commit target ensure that your schematic has a revision=0 attribute. I use this to automatically update the revision number in the schematic title block. This simply makes it easier to track changes in git more regularly.
-
-
 .PHONY: sch pcb gerbv clean 
 
 #if [ ! -f version ]; then echo 0 > version; fi ;
 SHELL := /bin/bash
 
+# DIRECTORY/NAME MACROS
+# OUT: output directory
+# IMG: image directory
+# PCB: directory for the PCB files
+# SCH: directory for the schematics
+# SS: subdirectory of $SCH for sub-circuits
+# NAME: root name of the project, used for files etc.
 
-OUT=release
-IMG=$(OUT)/img
+# NAMES
+NAME=
+AUTHOR=
+EMAIL=
+
+# INPUT DIRS
 PCB=pcb
 SCH=sch
 SS=subcircuits
-NAME=projectName
 
+# OUTPUT DIRS
+OUT=release
+IMG=$(OUT)/img
+HACKVANA=$(OUT)/hackvana
+GERBER=$(OUT)/gerber
+
+# MAKE SURE OUTPUT DIRS EXIST
+$(shell mkdir -p $(HACKVANA))
+$(shell mkdir -p $(GERBER))
+$(shell mkdir -p $(IMG))
+
+
+# COMMAND MACROS
 
 COLORS=--layer-color-1 '\#ff0000' --layer-color-2 '\#ff0000' --layer-color-3 '\#0000ff' --layer-color-4 '\#0000ff' --layer-color-5 '\#00868b' --layer-color-6 '\#228b22'
 SHADOW=convert $< \( +clone -background black -shadow 75x20+20+20 \) +swap -background white -layers merge  $@
@@ -44,14 +43,20 @@ PHOTOFLIP=pcb -x png $(COLORS) --only-visible --use-alpha --dpi 1000 --photo-mod
 ROUTE=pcb -x png $(COLORS) --only-visible --use-alpha --dpi 1000 --as-shown --outfile $@ $<
 CP=cp $< $@
 DIR=rsync -r --delete $</ $@
-BOM=gnetlist -g gbom $< -o $@
-GITDESC=$(shell git describe --tags)
-RELEASE=release.$(GITDESC).tar.bz2
+# The BOM can include custom attributes simply by adding them to the schematic and the -Oattribs comma separated list.
+BOM=gnetlist -g bom $< -o $@ -Oattribs=footprint,price_single,price_100,supplier,supplier_part_number,manufacturer,manufacturer_part_number
+GITDESC=$(shell git describe --tags --abbrev=0)
+UPDATECMD:=
 
-SCHFILES=$(SCH)/$(NAME).sch $(SCH)/$(SS)/reg3V3_ss.sch $(SCH)/$(SS)/reg5V_ss.sch $(SCH)/$(SS)/relay_ss.sch
+# FILES
+# RELEASE is an archive of all the source and output files that make up the project
+# SCHFILES are the source schematic files
+
+RELEASE=release.$(GITDESC).tar.bz2
+SCHFILES=
+
 COMMITFILES:=
 VER:=
-UPDATECMD:=
 
 commit: .git/COMMIT_EDITMSG
 	@echo $(COMMITFILES)
@@ -64,41 +69,80 @@ $(SCH)/$(NAME).sch: FORCE
 	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
 	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
 	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/git_tag=.*/git_tag=$(GITDESC)/" -i $@ ; ))
 	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
 
+$(SCH)/$(SS)/reg5V_ss.sch: FORCE
+	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
 
-#$(SCH)/$(SS)/filename.sch: FORCE
-#	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
-#	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
-#	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
-#	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
+$(SCH)/$(SS)/relay_ss.sch: FORCE
+	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
+	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
 	
 all: alloutputs release
 
-alloutputs: bom png files gerber dir
+alloutputs: bom png files gerber dir hackvana
 
-bom: $(OUT)/$(NAME)-bom.csv 
+bom: $(OUT)/$(NAME)-bom.tsv 
 
 png: $(IMG)/$(NAME)-top.png $(IMG)/$(NAME)-bottom.png $(IMG)/$(NAME)-route.png $(IMG)/$(NAME)-top-post.png $(IMG)/$(NAME)-bottom-post.png $(IMG)/$(NAME)-route-post.png 
 
-gerber: $(OUT)/gerber
+gerber: $(GERBER)/$(NAME).top.gbr
 
+
+hackvana: $(OUT)/hackvana-$(GITDESC).zip
+
+$(OUT)/hackvana-$(GITDESC).zip: $(HACKVANA)/$(NAME).botom.gbl $(HACKVANA)/$(NAME).bottommask.gbs $(HACKVANA)/$(NAME).bottomsilk.gbo $(HACKVANA)/$(NAME).outline.gbr $(HACKVANA)/$(NAME).plated-drill.cnc $(HACKVANA)/$(NAME).top.gtl $(HACKVANA)/$(NAME).topmask.gts $(HACKVANA)/$(NAME).topsilk.gto $(HACKVANA)/$(NAME).non-plated_NPTH.drl
+	zip -jr $@ $(HACKVANA)/*
+
+$(HACKVANA)/%.gbl: $(GERBER)/$(NAME).bottom.gbr
+	cp $< $@
+
+$(HACKVANA)/%.gbo: $(GERBER)/$(NAME).bottomsilk.gbr
+	cp $< $@
+
+$(HACKVANA)/%.gbs: $(GERBER)/$(NAME).bottommask.gbr
+	cp $< $@
+
+$(HACKVANA)/%.gtl: $(GERBER)/$(NAME).top.gbr
+	cp $< $@
+
+$(HACKVANA)/%.gto: $(GERBER)/$(NAME).topsilk.gbr
+	cp $< $@
+
+$(HACKVANA)/%.gts: $(GERBER)/$(NAME).topmask.gbr
+	cp $< $@
+
+$(HACKVANA)/%.cnc: $(GERBER)/$(NAME).plated-drill.cnc
+	cp $< $@
+
+$(HACKVANA)/%.drl: $(GERBER)/$(NAME).unplated-drill.cnc
+	cp $< $@
+
+$(HACKVANA)/%.gbr: $(GERBER)/$(NAME).outline.gbr
+	cp $< $@
 
 # Each file that you want to be rolled up as part of a release should be identified here.
-files: $(OUT)/$(NAME).sch $(OUT)/reg3V3_ss.sch $(OUT)/reg5V_ss.sch  $(OUT)/$(NAME).pcb $(OUT)/relay_ss.sch $(OUT)/Makefile
+files: $(OUT)/$(NAME).sch $(OUT)/$(NAME).pcb $(OUT)/Makefile
 
 # These are the directories that you want to have rolled into the release.
-dir: $(OUT)/fp $(OUT)/sym
+dir: $(OUT)/fp $(OUT)/sym 
 
 release: $(RELEASE)
 
+%.gbr: $(PCB)/$(NAME).pcb
+	pcb -x gerber --fab-author "$(AUTHOR) $(EMAIL)" --gerberfile $(GERBER)/$(NAME) $<
 
-$(OUT)/gerber: $(PCB)/$(NAME).pcb
-	if [ ! -d $@ ]; then mkdir $@; else rm -r $@/*; fi ;
-	pcb -x gerber --fab-author "Geoff Swan (geoff@nixotic.com)" --gerberfile $@/$(NAME) $<
-	rename 's/group3/dimension-notes/' $@/$(NAME).group3.gbr
+%.cnc: $(PCB)/$(NAME).pcb
+	pcb -x gerber --fab-author "$(AUTHOR) $(EMAIL)" --gerberfile $(GERBER)/$(NAME) $<
 
-$(OUT)/$(NAME)-bom.csv: $(NAME).sch
+
+$(OUT)/$(NAME)-bom.tsv: $(SCH)/$(NAME).sch
 	$(BOM)
 
 $(IMG)/$(NAME)-top-post.png: $(IMG)/$(NAME)-top.png
@@ -122,10 +166,13 @@ $(IMG)/$(NAME)-route-post.png: $(IMG)/$(NAME)-route.png
 $(OUT)/Makefile: Makefile
 	$(CP)
 
-%.sch: $(SCH)/$(SS)/%.sch
+$(OUT)/%.sch: $(SCH)/$(SS)/%.sch
 	$(CP)
 
-%.pcb: $(PCB)/%.pcb
+$(OUT)/%.sch: $(SCH)/%.sch
+	$(CP)
+
+$(OUT)/%.pcb: $(PCB)/%.pcb
 	$(CP)
 
 $(OUT)/fp: $(PCB)/fp
@@ -134,7 +181,7 @@ $(OUT)/fp: $(PCB)/fp
 $(OUT)/sym: $(SCH)/sym
 	$(DIR)
 
-$(RELEASE): $(OUT)/* $(OUT)/*/*
+$(RELEASE): $(SCHFILES) $(PCB)/$(NAME).pcb $(OUT)/$(NAME)-bom.tsv $(OUT)/Makefile
 	if [ -f release*.tar.bz2 ]; then rm release*.tar.bz2; fi ;
 	tar -jcf $@ $(OUT)
 
@@ -146,13 +193,11 @@ pcb:
 	cd sch; pcb ../$(PCB)/$(NAME).pcb
 
 gerbv:
-	gerbv $(OUT)/gerber/*
+	gerbv $(GERBER)/*
 
 clean:
-	rm -r $(OUT)/gerber/*
-	rmdir $(OUT)/gerber
-	rm -r $(OUT)/img/*
-	rm -r $(OUT)/*
+	rm -rf $(OUT)
+	rm -f $(RELEASE)
 
 FORCE:
 	

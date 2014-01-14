@@ -1,6 +1,6 @@
 /* README
  *
- * Copyright 2009-2012 Nixotic Design
+ * Copyright 2009-2014 Nixotic Design
  *
  * This file is part of Nixotic gEDA-tools.
  *
@@ -35,5 +35,7 @@ project-dir/sch/subcircuits/
 project-dir/sch/sym/
 project-dir/pcb/
 project-dir/release/
+project-dir/release/img
+project-dir/release/gerber
 
 The tools also assume you are using a git repository to track your files.

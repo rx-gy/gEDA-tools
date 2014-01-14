@@ -1,4 +1,3 @@
-.gitignore
 fpgen.py
 *~
 *.save
@@ -8,3 +7,4 @@ datasheets/
 *pcb-
 *#
 *.csv
+release*

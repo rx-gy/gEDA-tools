@@ -53,10 +53,15 @@ UPDATECMD:=
 # SCHFILES are the source schematic files
 
 RELEASE=release.$(GITDESC).tar.bz2
-SCHFILES=
+SCHFILES=sch/$(NAME).sch
 
 COMMITFILES:=
 VER:=
+
+# If you use an attribute in gschem name "revision" then this will automatically update the
+# revision number and use that in a git commit of the schematic
+# Similarly if you use tags, then by adding a git_tag attribute to the schematic you can have
+# your schematic include the current git tag automatically.
 
 commit: .git/COMMIT_EDITMSG
 	@echo $(COMMITFILES)

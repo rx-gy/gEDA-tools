@@ -72,18 +72,6 @@ $(SCH)/$(NAME).sch: FORCE
 	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/git_tag=.*/git_tag=$(GITDESC)/" -i $@ ; ))
 	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
 
-$(SCH)/$(SS)/reg5V_ss.sch: FORCE
-	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
-
-$(SCH)/$(SS)/relay_ss.sch: FORCE
-	$(eval COMMITFILES+=$(shell git add $@; if [[ $$(git status | grep -o [\(modified\)\(new\)].*$@) != '' ]]; then echo $@ ; fi))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval VER=$(shell echo `grep -o revision=[0-9]* $@ | grep -o [0-9]*`+1 | bc)))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATECMD+=sed "s/revision=[0-9]*/revision=$(VER)/" -i $@ ; ))
-	$(if $(findstring $@,$(COMMITFILES)), $(eval UPDATEMSG+=$@: V$(VER)))
-	
 all: alloutputs release
 
 alloutputs: bom png files gerber dir hackvana

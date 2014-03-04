@@ -1,3 +1,7 @@
+# gEDA-tools
+
+This is a collection of scripts and so forth that I have found helpful for my gEDA workflow.
+
 ```shell
 /* README
  *
@@ -20,10 +24,7 @@
  */
 ```
 
-This is a collection of scripts and so forth that I have found helpful for my gEDA workflow.
-
-
-These tools may presuppose the following directory structure however you may be able to modify them to suit your own setup.
+These tools presuppose the use of git and the following directory structure.
 
 ```
 project-dir/
@@ -41,10 +42,7 @@ project-dir/release/img
 project-dir/release/gerber
 ```
 
-The tools also assume you are using a git repository to track your files.
-
-
-Quick Start:
+# Quick Start:
 
 1. Copy this directory and all contents to desired location.
 

@@ -54,10 +54,9 @@ project-dir/release/gerber
     ```
 
 2. Modify Makefile and example.sch to suit your project.
-
-        Change the NAME=example line to the desired name of your project.
-        Set the AUTHOR= and EMAIL= lines.
-        Rename sch/example.sch to match the Makefile NAME= setting.
+   * Change the NAME=example line to the desired name of your project.
+   * Set the AUTHOR= and EMAIL= lines.
+   * Rename sch/example.sch to match the Makefile NAME= setting.
 
 3. Create the pcb file:
 
@@ -65,9 +64,9 @@ project-dir/release/gerber
     make pcb
     ```
 
-        Select 'file'->'import schematic'
-        Select <projectname>.sch (as set up in the previous step)
-        Save the pcb file
+   * Select 'file'->'import schematic'
+   * Select <projectname>.sch (as set up in the previous step)
+   * Save the pcb file
 
 4. Set up git:
 

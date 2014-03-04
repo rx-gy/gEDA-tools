@@ -3,9 +3,9 @@ C 0 0 0 0 0 title-ver-A3.sym
 T 13400 100 9 12 1 0 0 0 1
 Your Name
 T 13400 400 8 10 1 1 0 0 1
-revision=1
+revision=0
 T 14600 400 8 10 1 1 0 0 1
-git_tag=VER000
+git_tag='git tag' sets this up
 T 9600 700 9 12 1 0 0 0 1
 Example schematic for nixotic gEDA tools.
 T 9600 400 9 12 1 0 0 0 1

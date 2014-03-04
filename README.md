@@ -25,6 +25,7 @@ This is a collection of scripts and so forth that I have found helpful for my gE
 
 These tools may presuppose the following directory structure however you may be able to modify them to suit your own setup.
 
+```
 project-dir/
 project-dir/Makefile  
 project-dir/gitignore
@@ -38,6 +39,7 @@ project-dir/pcb/
 project-dir/release/
 project-dir/release/img
 project-dir/release/gerber
+```
 
 The tools also assume you are using a git repository to track your files.
 
@@ -64,9 +66,10 @@ Quick Start:
     ```shell
     make pcb
     ```
-    Select 'file'->'import schematic'
-    Select <projectname>.sch (as set up in the previous step)
-    Save the pcb file
+
+        Select 'file'->'import schematic'
+        Select <projectname>.sch (as set up in the previous step)
+        Save the pcb file
 
 4. Set up git:
 

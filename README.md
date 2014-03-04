@@ -63,7 +63,6 @@ project-dir/release/gerber
     ```shell
     make pcb
     ```
-
    * Select 'file'->'import schematic'
    * Select <projectname>.sch (as set up in the previous step)
    * Save the pcb file

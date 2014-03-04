@@ -54,25 +54,32 @@ Quick Start:
     ```
 
 2. Modify Makefile and example.sch to suit your project.
-        Change the NAME=example line to the desired name of your project.
-        Set the AUTHOR= and EMAIL= lines.
-        Rename sch/example.sch to match the Makefile NAME= setting.
+
+    Change the NAME=example line to the desired name of your project.
+    Set the AUTHOR= and EMAIL= lines.
+    Rename sch/example.sch to match the Makefile NAME= setting.
+
 3. Create the pcb file:
-```shell
-make pcb
-```
-Select 'file'->'import schematic'
-Select <projectname>.sch (as set up in the previous step)
-Save the pcb file
+
+    ```shell
+    make pcb
+    ```
+    Select 'file'->'import schematic'
+    Select <projectname>.sch (as set up in the previous step)
+    Save the pcb file
+
 4. Set up git:
-```shell
-git init
-git add *
-git commit -am 'initial commit'
-git tag 'release_0.1'
-```
+
+    ```shell
+    git init
+    git add *
+    git commit -am 'initial commit'
+    git tag 'release_0.1'
+    ```
+
 5. Start working on your schematic!
-```shell
-make sch
-```
+
+    ```shell
+    make sch
+    ```
 

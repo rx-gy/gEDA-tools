@@ -55,9 +55,9 @@ Quick Start:
 
 2. Modify Makefile and example.sch to suit your project.
 
-    Change the NAME=example line to the desired name of your project.
-    Set the AUTHOR= and EMAIL= lines.
-    Rename sch/example.sch to match the Makefile NAME= setting.
+        Change the NAME=example line to the desired name of your project.
+        Set the AUTHOR= and EMAIL= lines.
+        Rename sch/example.sch to match the Makefile NAME= setting.
 
 3. Create the pcb file:
 

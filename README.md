@@ -2,28 +2,6 @@
 
 This is a collection of scripts and so forth that I have found helpful for my gEDA workflow.
 
-```shell
-/* README
- *
- * Copyright 2009-2014 Nixotic Design
- *
- * This file is part of Nixotic gEDA-tools.
- *
- * Nixotic gEDA-tools is free software: you can redistribute it and/or modify
- * it under the terms of the Lesser GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Nixotic gEDA-tools is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * Lesser GNU General Public License for more details.
- *
- * You should have received a copy of the Lesser GNU General Public License
- * along with Nixotic gEDA-tools.  If not, see <http://www.gnu.org/licenses/>.
- */
-```
-
 These tools presuppose the use of git and the following directory structure.
 
 ```
@@ -52,12 +30,8 @@ project-dir/release/gerber
     cp -r gEDA-tools/* projectName/
     cd projectName
     ```
-    ```shell
-    The symbols in the lib directory will be browsable from gschem, however I recommend moving any
-schematic symbols you intend to use to your project local sch/sym directory as 
-future modifications to a symbol could break an old project.
+    The symbols in the lib directory will be browsable from gschem, however I recommend moving any schematic symbols you intend to use to your project local sch/sym directory as future modifications to a symbol could break an old project.
     Footprints for symbols used from the lib/ directory will need to be copied to the project local pcb/fp directory.
-    ```
 
 2. Modify Makefile and example.sch to suit your project.
    * Change the NAME=example line to NAME=_projectName_ (the desired name of your project).

@@ -53,12 +53,14 @@ project-dir/release/gerber
     cd projectName
     ```
     ```shell
-    The symbols in the lib directory will be browsable from gschem, however I recommend moving any schematic symbols you intend to use to your project local sch/sym directory as future modifications to a symbol could break an old project.
+    The symbols in the lib directory will be browsable from gschem, however I recommend moving any
+schematic symbols you intend to use to your project local sch/sym directory as 
+future modifications to a symbol could break an old project.
     Footprints for symbols used from the lib/ directory will need to be copied to the project local pcb/fp directory.
     ```
 
 2. Modify Makefile and example.sch to suit your project.
-   * Change the NAME=example line to NAME=projectName (the desired name of your project).
+   * Change the NAME=example line to NAME=_projectName_ (the desired name of your project).
    * Set the AUTHOR= and EMAIL= lines.
    * Rename sch/example.sch to match the Makefile NAME= setting.
 
@@ -68,8 +70,8 @@ project-dir/release/gerber
     make pcb
     ```
    Note: You will receive some warnings on the command line at this stage as git hasn't yet been set up.
-   * Select 'file'->'import schematic'
-   * Select projectName.sch (as set up in the previous step)
+   * Select _file_->_import schematic_
+   * Select _projectName.sch_ (as set up in the previous step)
    * Save the pcb file
 4. Set up git:
 
@@ -94,5 +96,7 @@ project-dir/release/gerber
     make
     ```
 
-7. Start editing schematic for real!! Remember, you can run the make command at any stage to automatically commit schematic changes to your git repository and update the schematic revision field.
+7. __Start editing schematic for real!!__
+
+    Remember, you can run the make command at any stage to automatically commit schematic changes to your git repository and update the schematic revision field.
 

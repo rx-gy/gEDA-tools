@@ -1,3 +1,4 @@
+```shell
 /* README
  *
  * Copyright 2009-2014 Nixotic Design
@@ -17,7 +18,7 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with Nixotic gEDA-tools.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+```
 
 This is a collection of scripts and so forth that I have found helpful for my gEDA workflow.
 
@@ -42,24 +43,30 @@ The tools also assume you are using a git repository to track your files.
 
 
 Quick Start:
+
 1. Copy this directory and all contents to desired location.
+
 ```shell
 git clone https://github.com/nixotic/gEDA-tools
 mkdir projectName
 cp -r gEDA-tools/* projectName/
 cd projectName
+```
 2. Modify Makefile and example.sch to suit your project.
         Change the NAME=example line to the desired name of your project.
         Set the AUTHOR= and EMAIL= lines.
         Rename sch/example.sch to match the Makefile NAME= setting.
 3. Create the pcb file:
+
 ```shell
 make pcb
 ```
         Select 'file'->'import schematic'
         Select <projectname>.sch (as set up in the previous step)
         Save the pcb file
+
 4. Set up git:
+
 ```shell
 git init
 git add *
@@ -67,6 +74,7 @@ git commit -am 'initial commit'
 git tag 'release_0.1'
 ```
 5. Start working on your schematic!
+
 ```shell
 make sch
 ```

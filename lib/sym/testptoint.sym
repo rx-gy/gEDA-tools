@@ -1,0 +1,34 @@
+v 20111231 2
+P 100 0 100 200 1 0 0
+{
+T 300 0 5 10 0 0 0 0 1
+pinseq=1
+T 300 200 5 10 0 0 0 0 1
+pinnumber=1
+T 100 0 5 10 0 1 0 0 1
+pintype=io
+T 100 0 5 10 0 1 0 0 1
+pinlabel=1
+}
+L 0 300 100 200 3 0 0 0 -1 -1
+L 100 200 200 300 3 0 0 0 -1 -1
+L 0 300 100 400 3 0 0 0 -1 -1
+L 100 400 200 300 3 0 0 0 -1 -1
+T 100 400 8 10 1 1 0 0 1
+refdes=TP?
+T 100 1600 8 10 0 0 0 0 1
+manufacturer=TBD
+T 100 1400 8 10 0 0 0 0 1
+manufacturer_part_number=TBD
+T 100 1200 8 10 0 0 0 0 1
+supplier=TBD
+T 100 1000 8 10 0 0 0 0 1
+supplier_part_number=TBD
+T 100 800 8 10 0 0 0 0 1
+price_single=0
+T 100 600 8 10 0 0 0 0 1
+price_100=0
+T 100 2000 8 10 0 0 0 0 1
+device=TESTPOINT
+T 100 1800 8 10 0 0 0 0 1
+footprint=1x1PIN

@@ -1,0 +1,118 @@
+v 20121203 2
+P 3900 1100 3600 1100 1 0 0
+{
+T 3700 1150 5 8 1 1 0 0 1
+pinnumber=6
+T 3700 250 5 8 0 1 0 2 1
+pinseq=6
+T 3550 1100 9 8 1 1 0 6 1
+pinlabel=(MISO/DO/AIN1/OC0B/OC1A/PCINT1) PB1
+T 3550 300 5 8 0 1 0 8 1
+pintype=io
+}
+P 3900 400 3600 400 1 0 0
+{
+T 3700 450 5 8 1 1 0 0 1
+pinnumber=7
+T 3700 -450 5 8 0 1 0 2 1
+pinseq=7
+T 3550 400 9 8 1 1 0 6 1
+pinlabel=(SCK/USCK/SCL/ADC1/T0/INT0/PCINT2) PB2
+T 3550 -400 5 8 0 1 0 8 1
+pintype=io
+}
+P 3900 1300 3600 1300 1 0 0
+{
+T 3700 1350 5 8 1 1 0 0 1
+pinnumber=2
+T 3700 450 5 8 0 1 0 2 1
+pinseq=2
+T 3550 1300 9 8 1 1 0 6 1
+pinlabel=(PCINT3/XTAL1/CLKI/\_OC1B\_/ADC3) PB3
+T 3550 500 5 8 0 1 0 8 1
+pintype=io
+}
+P 3900 900 3600 900 1 0 0
+{
+T 3695 945 5 8 1 1 0 0 1
+pinnumber=3
+T 3700 50 5 8 0 1 0 2 1
+pinseq=3
+T 3545 895 9 8 1 1 0 6 1
+pinlabel=(PCINT4/XTAL2/OC1B/ADC2) PB4
+T 3550 100 5 8 0 1 0 8 1
+pintype=io
+}
+P 3900 1500 3600 1500 1 0 0
+{
+T 3695 1545 5 8 1 1 0 0 1
+pinnumber=1
+T 3700 650 5 8 0 1 0 2 1
+pinseq=1
+T 3545 1495 9 8 1 1 0 6 1
+pinlabel=(PCINT5/\_RESET\_/ADC0/dW) PB5
+T 3550 700 5 8 0 1 0 8 1
+pintype=io
+}
+B 0 0 3600 2300 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+T 3600 2325 8 10 1 1 0 6 1
+refdes=U?
+T 0 2325 5 10 1 1 0 0 1
+device=ATtiny85
+P 3900 200 3600 200 1 0 0
+{
+T 3700 250 5 8 1 1 0 0 1
+pinnumber=5
+T 3700 -650 5 8 0 1 0 2 1
+pinseq=5
+T 3550 200 9 8 1 1 0 6 1
+pinlabel=(MOSI/DI/SDA/AIN0/OC0A/\_OC1A\_/AREF/PCINT0) PB0
+T 3550 -600 5 8 0 1 0 8 1
+pintype=io
+}
+P 3900 1900 3600 1900 1 0 0
+{
+T 3695 1945 5 8 1 1 0 0 1
+pinnumber=4
+T 3700 1850 5 8 0 1 0 2 1
+pinseq=4
+T 3545 1895 9 8 1 1 0 6 1
+pinlabel=GND
+T 3550 1900 5 8 0 1 0 8 1
+pintype=pwr
+}
+P 3900 2100 3600 2100 1 0 0
+{
+T 3695 2145 5 8 1 1 0 0 1
+pinnumber=8
+T 3700 2050 5 8 0 1 0 2 1
+pinseq=8
+T 3545 2095 9 8 1 1 0 6 1
+pinlabel=VCC
+T 3550 2100 5 8 0 1 0 8 1
+pintype=pwr
+}
+T 0 2600 5 10 0 0 0 0 1
+footprint=SO8WG
+T 0 2800 5 10 0 0 0 0 1
+author=Geoff Swan
+T 0 3000 5 10 0 0 0 0 1
+description=Atmel AVR ATTiny85
+T 0 3200 5 10 0 0 0 0 1
+numslots=0
+T 0 3400 5 10 0 0 0 0 1
+dist-license=GPL2
+T 0 3600 5 10 0 0 0 0 1
+use-license=GPL2
+T 0 4800 8 10 0 0 0 0 1
+supplier=digikey
+T 0 4600 8 10 0 0 0 0 1
+supplier_part_number=ATTINY85-15STCT-ND
+T 0 4400 8 10 0 0 0 0 1
+manufacturer=Atmel
+T 0 4200 8 10 0 0 0 0 1
+manufacturer_part_number=ATTINY85-15ST
+T 0 4000 8 10 0 0 0 0 1
+price_single=3.61
+T 0 3800 8 10 0 0 0 0 1
+price_100=2.6957

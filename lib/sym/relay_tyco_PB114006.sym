@@ -1,0 +1,89 @@
+v 20110116 2
+P 900 300 700 300 1 0 0
+{
+T 795 345 5 8 1 1 0 0 1
+pinnumber=12
+T 800 350 5 8 0 1 180 8 1
+pinseq=1
+T 645 295 9 8 0 1 0 6 1
+pinlabel=1
+T 650 300 5 8 0 1 180 2 1
+pintype=io
+}
+P 0 600 200 600 1 0 0
+{
+T 100 650 5 8 1 1 0 6 1
+pinnumber=A1
+T 100 550 5 8 0 1 0 8 1
+pinseq=2
+T 250 600 5 8 0 1 0 2 1
+pintype=io
+}
+P 0 0 200 0 1 0 0
+{
+T 105 45 5 8 1 1 0 6 1
+pinnumber=A2
+T 100 50 5 8 0 1 180 2 1
+pinseq=3
+T 255 -5 9 8 0 1 0 0 1
+pinlabel=6
+T 250 0 5 8 0 1 180 8 1
+pintype=io
+}
+P 900 600 700 600 1 0 0
+{
+T 800 650 5 8 1 1 0 0 1
+pinnumber=11
+T 800 550 5 8 0 1 0 2 1
+pinseq=4
+T 650 600 9 8 0 1 0 6 1
+pinlabel=7
+T 650 600 5 8 0 1 0 8 1
+pintype=io
+}
+P 900 0 700 0 1 0 0
+{
+T 795 45 5 8 1 1 0 0 1
+pinnumber=14
+T 800 -50 5 8 0 1 0 2 1
+pinseq=5
+T 645 -5 9 8 0 1 0 6 1
+pinlabel=14
+T 650 0 5 8 0 1 0 8 1
+pintype=io
+}
+T 275 725 8 10 1 1 0 4 1
+refdes=K?
+T 100 1200 5 10 0 1 0 0 1
+device=Tyco PB114006
+T 100 1400 5 10 0 0 0 0 1
+footprint=Reed-Relay_Meder_DIPxx-1C90-51D
+T 100 1600 5 10 0 0 0 0 1
+author=Stefan Salewski
+T 100 1800 5 10 0 0 0 0 1
+documentation=http://www.meder.com/upload/produkte/36_de_1_Relais%20DIP%20Serie%20d.pdf
+T 100 2000 5 10 0 0 0 0 1
+description=Reed-Relay Meder DIPxx-1C90-51D
+T 100 2200 5 10 0 0 0 0 1
+numslots=0
+T 100 2400 5 10 0 0 0 0 1
+dist-license=GPL
+T 100 2600 5 10 0 0 0 0 1
+use-license=unlimited
+L 300 0 300 100 3 0 0 0 -1 -1
+A 300 151 49 90 180 3 0 0 0 -1 -1
+L 200 600 300 600 3 0 0 0 -1 -1
+L 300 600 300 500 3 0 0 0 -1 -1
+A 300 251 49 90 180 3 0 0 0 -1 -1
+A 300 351 49 90 180 3 0 0 0 -1 -1
+A 300 451 49 90 180 3 0 0 0 -1 -1
+L 700 600 400 600 3 0 0 0 -1 -1
+L 400 600 400 400 3 0 0 0 -1 -1
+L 400 400 625 260 3 0 0 0 -1 -1
+L 600 300 700 300 3 0 0 0 -1 -1
+L 700 0 600 0 3 0 0 0 -1 -1
+L 600 300 600 250 3 0 0 0 -1 -1
+L 600 0 600 50 3 0 0 0 -1 -1
+L 300 0 200 0 3 0 0 0 -1 -1
+T -100 900 8 10 1 1 0 0 1
+device=Tyco PB114006

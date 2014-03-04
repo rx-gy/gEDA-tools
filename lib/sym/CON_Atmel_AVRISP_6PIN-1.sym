@@ -1,0 +1,94 @@
+v 20111231 2
+P 1000 1200 700 1200 1 0 0
+{
+T 800 1250 5 8 1 1 0 0 1
+pinnumber=1
+T 1150 1350 5 8 0 0 0 2 1
+pinseq=1
+T 650 1200 9 8 1 1 0 6 1
+pinlabel=MISO
+T 2600 1350 5 8 0 0 0 8 1
+pintype=pas
+}
+P 1000 1000 700 1000 1 0 0
+{
+T 800 1050 5 8 1 1 0 0 1
+pinnumber=2
+T 1150 1150 5 8 0 0 0 2 1
+pinseq=2
+T 650 1000 9 8 1 1 0 6 1
+pinlabel=VTG
+T 2600 1150 5 8 0 0 0 8 1
+pintype=pwr
+}
+P 1000 400 700 400 1 0 0
+{
+T 800 450 5 8 1 1 0 0 1
+pinnumber=5
+T 1150 550 5 8 0 0 0 2 1
+pinseq=5
+T 650 400 9 8 1 1 0 6 1
+pinlabel=RST
+T 2600 550 5 8 0 0 0 8 1
+pintype=pas
+}
+P 1000 800 700 800 1 0 0
+{
+T 800 850 5 8 1 1 0 0 1
+pinnumber=3
+T 1150 950 5 8 0 0 0 2 1
+pinseq=3
+T 650 800 9 8 1 1 0 6 1
+pinlabel=SCK
+T 2600 950 5 8 0 0 0 8 1
+pintype=pas
+}
+P 1000 600 700 600 1 0 0
+{
+T 800 650 5 8 1 1 0 0 1
+pinnumber=4
+T 1150 750 5 8 0 0 0 2 1
+pinseq=4
+T 650 600 9 8 1 1 0 6 1
+pinlabel=MOSI
+T 2600 750 5 8 0 0 0 8 1
+pintype=pas
+}
+B 0 0 700 1400 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+T 200 1450 8 10 1 1 0 6 1
+refdes=J?
+T 150 1050 9 10 1 0 90 4 1
+AVRISP
+T 0 3750 5 10 0 0 0 0 1
+device=Atmel AVRISP Connector
+T 0 3100 5 10 0 0 0 0 1
+footprint=2x3PIN
+T 0 3350 5 10 0 0 0 0 1
+documentation=http://www.atmel.com/dyn/resources/prod_documents/doc1925.pdf
+T 0 3550 5 10 0 0 0 0 1
+description=Atmel AVR ISP 6 pin header
+P 1000 200 700 200 1 0 0
+{
+T 800 250 5 8 1 1 0 0 1
+pinnumber=6
+T 1150 350 5 8 0 0 0 2 1
+pinseq=6
+T 650 200 9 8 1 1 0 6 1
+pinlabel=GND
+T 2600 350 5 8 0 0 0 8 1
+pintype=pwr
+}
+T 0 2700 8 10 0 0 0 0 1
+manufacturer=TBD
+T 0 2500 8 10 0 0 0 0 1
+manufacturer_part_number=TBD
+T 0 2300 8 10 0 0 0 0 1
+supplier=TBD
+T 0 2100 8 10 0 0 0 0 1
+supplier_part_number=TBD
+T 0 1900 8 10 0 0 0 0 1
+price_single=0
+T 0 1700 8 10 0 0 0 0 1
+price_100=0
+T 0 2900 5 10 0 0 0 0 1
+footprints=2x3PIN,2x3EDGE_100MIL

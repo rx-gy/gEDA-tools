@@ -52,6 +52,10 @@ project-dir/release/gerber
     cp -r gEDA-tools/* projectName/
     cd projectName
     ```
+    ```shell
+    The symbols in the lib directory will be browsable from gschem, however I recommend moving any schematic symbols you intend to use to your project local sch/sym directory as future modifications to a symbol could break an old project.
+    Footprints for symbols used from the lib/ directory will need to be copied to the project local pcb/fp directory.
+    ```
 
 2. Modify Makefile and example.sch to suit your project.
    * Change the NAME=example line to NAME=projectName (the desired name of your project).
@@ -63,6 +67,7 @@ project-dir/release/gerber
     ```shell
     make pcb
     ```
+   Note: You will receive some warnings on the command line at this stage as git hasn't yet been set up.
    * Select 'file'->'import schematic'
    * Select projectName.sch (as set up in the previous step)
    * Save the pcb file
@@ -71,14 +76,23 @@ project-dir/release/gerber
     ```shell
     mv gitignore .gitignore
     git init
-    git add *
+    git add .
     git commit -am 'initial commit'
     git tag 'release_0.1'
     ```
 
-5. Start working on your schematic!
+5. Modify the basic schematic template with appropriate title, author etc...
 
     ```shell
     make sch
     ```
+    Note: save changes!
+
+6. Run the 'make' command to update the TAG and REVISION in the schematic
+
+    ```shell
+    make
+    ```
+
+7. Start editing schematic for real!! Remember, you can run the make command at any stage to automatically commit schematic changes to your git repository and update the schematic revision field.
 

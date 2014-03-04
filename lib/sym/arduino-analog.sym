@@ -1,0 +1,93 @@
+v 20111231 2
+T 0 3395 8 10 0 0 0 0 1
+description=Arduino analog interface connector
+T 0 3195 8 10 0 0 0 0 1
+footprint=ARDUINO
+T 0 2995 8 10 0 0 0 0 1
+device=ARDUINO
+P 800 1200 500 1200 1 0 0
+{
+T 2700 1200 5 10 0 0 180 8 1
+pintype=pas
+T 600 1200 5 10 0 0 180 8 1
+pinseq=22
+T 1500 1200 5 10 0 0 0 0 1
+pinnumber=22
+T 400 1200 5 10 1 1 0 7 1
+pinlabel=0
+}
+P 800 1000 500 1000 1 0 0
+{
+T 2700 1000 5 10 0 0 180 8 1
+pintype=pas
+T 600 1000 5 10 0 0 180 8 1
+pinseq=21
+T 1500 1000 5 10 0 0 0 0 1
+pinnumber=21
+T 400 1000 5 10 1 1 0 7 1
+pinlabel=1
+}
+P 800 800 500 800 1 0 0
+{
+T 2700 800 5 10 0 0 180 8 1
+pintype=pas
+T 600 800 5 10 0 0 180 8 1
+pinseq=20
+T 1500 800 5 10 0 0 0 0 1
+pinnumber=20
+T 400 800 5 10 1 1 0 7 1
+pinlabel=2
+}
+P 800 600 500 600 1 0 0
+{
+T 2700 600 5 10 0 0 180 8 1
+pintype=pas
+T 600 600 5 10 0 0 180 8 1
+pinseq=19
+T 1500 600 5 10 0 0 0 0 1
+pinnumber=19
+T 400 600 5 10 1 1 0 7 1
+pinlabel=3
+}
+P 800 400 500 400 1 0 0
+{
+T 2700 400 5 10 0 0 180 8 1
+pintype=pas
+T 600 400 5 10 0 0 180 8 1
+pinseq=18
+T 1500 400 5 10 0 0 0 0 1
+pinnumber=18
+T 400 400 5 10 1 1 0 7 1
+pinlabel=4
+}
+P 800 200 500 200 1 0 0
+{
+T 2700 200 5 10 0 0 180 8 1
+pintype=pas
+T 600 200 5 10 0 0 180 8 1
+pinseq=17
+T 1500 200 5 10 0 0 0 0 1
+pinnumber=17
+T 400 200 5 10 1 1 0 7 1
+pinlabel=5
+}
+B 0 0 500 1400 3 0 0 0 -1 -1 0 -1 -1 -1 -1 -1
+T 200 700 9 8 1 0 90 3 1
+ARDUINO ANALOG
+T 0 3600 9 10 0 0 0 0 2
+Arduino Shield Symbol 2 of 4
+Analog interface - 6 pin SIL Header
+T 0 1400 8 10 1 1 0 0 1
+refdes=J?
+T 0 2800 8 10 0 0 0 0 1
+manufacturer=TBD
+T 0 2600 8 10 0 0 0 0 1
+manufacturer_part_number=TBD
+T 0 2400 8 10 0 0 0 0 1
+supplier=TBD
+T 0 2200 8 10 0 0 0 0 1
+supplier_part_number=TBD
+T 0 2000 8 10 0 0 0 0 1
+price_single=0
+T 0 1800 8 10 0 0 0 0 1
+price_100=0

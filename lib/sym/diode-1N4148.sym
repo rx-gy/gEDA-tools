@@ -1,0 +1,47 @@
+v 20111231 2
+L 200 350 200 50 3 0 0 0 -1 -1
+L 200 350 400 200 3 0 0 0 -1 -1
+L 400 200 200 50 3 0 0 0 -1 -1
+L 400 350 400 50 3 0 0 0 -1 -1
+P 600 200 400 200 1 0 0
+{
+T 495 245 5 8 0 0 0 0 1
+pinnumber=1
+T 1500 50 5 8 0 0 0 6 1
+pinseq=1
+T 545 95 5 8 0 1 0 6 1
+pinlabel=1
+T 1500 150 5 8 0 0 0 6 1
+pintype=pas
+}
+P 0 200 200 200 1 0 0
+{
+T 105 245 5 8 0 0 0 6 1
+pinnumber=2
+T -100 250 5 8 0 0 0 6 1
+pinseq=2
+T 55 95 5 8 0 1 0 0 1
+pinlabel=2
+T -100 50 5 8 0 0 0 6 1
+pintype=pas
+}
+T 0 400 8 10 1 1 0 0 1
+refdes=D?
+T 0 1900 8 10 0 0 0 0 1
+manufacturer_part_number=LL4148
+T 0 1700 8 10 0 0 0 0 1
+supplier=digikey
+T 0 1500 8 10 0 0 0 0 1
+supplier_part_number=LL4148FSCT-ND
+T 0 1300 8 10 0 0 0 0 1
+price_single=0.18
+T 0 1100 8 10 0 0 0 0 1
+price_100=0.05
+T 0 2100 8 10 0 0 0 0 1
+manufacturer=Fairchild Semi
+T 300 400 8 10 1 1 0 0 1
+device=LL4148
+T 0 900 8 10 0 0 0 0 1
+price_500=0.023
+T 0 700 8 10 0 0 0 0 1
+footprint=SOD80

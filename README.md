@@ -28,25 +28,25 @@ The reason the schematic has both a _REVISION_ field and the _GIT TAG_ field is 
 
 
 ## Commands:
-_make sch_ - open the schematic in gschem. This command insures gschem is run with all the correct project settings in place.
+```make sch``` - open the schematic in gschem. This command insures gschem is run with all the correct project settings in place.
 
-_make pcb_ - open the pcb layout in pcb.
+```make pcb``` - open the pcb layout in pcb.
 
-_make gerbv_ - open the gerbers in gerbv.
+```make gerbv``` - open the gerbers in gerbv.
 
-_make_, _make commit_ - if changes have been made to the schematic, this will update the schematics REVISION attribute, apply the latest git tag to the schematic and then commit the changes to git.
+```make```, ```make commit``` - if changes have been made to the schematic, this will update the schematics REVISION attribute, apply the latest git tag to the schematic and then commit the changes to git.
 
-_make bom_ - this will produce a bill of materials from the schematic in the _release/_ directory
+```make bom``` - this will produce a bill of materials from the schematic in the ```release/``` directory
 
-_make clean_ - this will clean the release directory, the primary purpose is to get rid of any gerber files.
+```make clean``` - this will clean the release directory, the primary purpose is to get rid of any gerber files.
 
-_make gerber_ - this produces the gerber files from the pcb layout
+```make gerber``` - this produces the gerber files from the pcb layout
 
-_make png_ - produce photo renders of the pcb layout. The images will be in the _release/img/_ directory.
+```make png``` - produce photo renders of the pcb layout. The images will be in the ```release/img/``` directory.
 
-_make production_ - package the gerbers into a zip using the current git tag to identify the release. This zip file should be ready to send directly to hackvana for production.
+```make production``` - package the gerbers into a zip using the current git tag to identify the release. This zip file should be ready to send directly to hackvana for production.
 
-_make release_ - package the files needed to reproduce the current set production gerbers into a tar archive. It is a good idea to keep a snapshot of everything used to produce a PCB for future reference.
+```make release``` - package the files needed to reproduce the current set production gerbers into a tar archive. It is a good idea to keep a snapshot of everything used to produce a PCB for future reference.
 
 ## Quick Start:
 

@@ -12,7 +12,7 @@ SHELL := /bin/bash
 # NAME: root name of the project, used for files etc.
 
 # NAMES
-NAME=
+NAME=example
 AUTHOR=
 EMAIL=
 
@@ -24,13 +24,16 @@ SS=subcircuits
 # OUTPUT DIRS
 OUT=release
 IMG=$(OUT)/img
-HACKVANA=$(OUT)/hackvana
 GERBER=$(OUT)/gerber
 
 # MAKE SURE OUTPUT DIRS EXIST
-$(shell mkdir -p $(HACKVANA))
 $(shell mkdir -p $(GERBER))
 $(shell mkdir -p $(IMG))
+$(shell mkdir -p $(PCB))
+$(shell mkdir -p $(PCB)/fp)
+$(shell mkdir -p $(SCH))
+$(shell mkdir -p $(SCH)/sym)
+$(shell mkdir -p $(SCH)/$(SS))
 
 
 # COMMAND MACROS
@@ -58,6 +61,7 @@ SCHFILES=sch/$(NAME).sch
 COMMITFILES:=
 VER:=
 
+
 # If you use an attribute in gschem name "revision" then this will automatically update the
 # revision number and use that in a git commit of the schematic
 # Similarly if you use tags, then by adding a git_tag attribute to the schematic you can have
@@ -79,46 +83,24 @@ $(SCH)/$(NAME).sch: FORCE
 
 all: alloutputs release
 
-alloutputs: bom png files gerber dir hackvana
+alloutputs: bom png files gerber dir production
 
 bom: $(OUT)/$(NAME)-bom.tsv 
 
 png: $(IMG)/$(NAME)-top.png $(IMG)/$(NAME)-bottom.png $(IMG)/$(NAME)-route.png $(IMG)/$(NAME)-top-post.png $(IMG)/$(NAME)-bottom-post.png $(IMG)/$(NAME)-route-post.png 
 
-gerber: $(GERBER)/$(NAME).top.gbr
+gerber: $(PCB)/$(NAME).pcb
+	pcb -x gerber --name-style hackvana  --fab-author "$(AUTHOR) $(EMAIL)" --gerberfile $(GERBER)/$(NAME) $<
 
+production: $(OUT)/production-$(GITDESC).zip
 
-hackvana: $(OUT)/hackvana-$(GITDESC).zip
+# Note: each hackvana order of an even slightly modified design should be a new revision. Use git tag to set the appropriate revision number/name for your design
+# and ensure your PCB is correctly marked!
 
-$(OUT)/hackvana-$(GITDESC).zip: $(HACKVANA)/$(NAME).botom.gbl $(HACKVANA)/$(NAME).bottommask.gbs $(HACKVANA)/$(NAME).bottomsilk.gbo $(HACKVANA)/$(NAME).outline.gbr $(HACKVANA)/$(NAME).plated-drill.cnc $(HACKVANA)/$(NAME).top.gtl $(HACKVANA)/$(NAME).topmask.gts $(HACKVANA)/$(NAME).topsilk.gto $(HACKVANA)/$(NAME).non-plated_NPTH.drl
-	zip -jr $@ $(HACKVANA)/*
+# This assumes that the project will at minimum produce a top layer. For completeness the other output layers should be included here also.
+$(OUT)/production-$(GITDESC).zip: $(GERBER)/$(NAME).gtl
+	zip -jr $@ $(GERBER)/*
 
-$(HACKVANA)/%.gbl: $(GERBER)/$(NAME).bottom.gbr
-	cp $< $@
-
-$(HACKVANA)/%.gbo: $(GERBER)/$(NAME).bottomsilk.gbr
-	cp $< $@
-
-$(HACKVANA)/%.gbs: $(GERBER)/$(NAME).bottommask.gbr
-	cp $< $@
-
-$(HACKVANA)/%.gtl: $(GERBER)/$(NAME).top.gbr
-	cp $< $@
-
-$(HACKVANA)/%.gto: $(GERBER)/$(NAME).topsilk.gbr
-	cp $< $@
-
-$(HACKVANA)/%.gts: $(GERBER)/$(NAME).topmask.gbr
-	cp $< $@
-
-$(HACKVANA)/%.cnc: $(GERBER)/$(NAME).plated-drill.cnc
-	cp $< $@
-
-$(HACKVANA)/%.drl: $(GERBER)/$(NAME).unplated-drill.cnc
-	cp $< $@
-
-$(HACKVANA)/%.gbr: $(GERBER)/$(NAME).outline.gbr
-	cp $< $@
 
 # Each file that you want to be rolled up as part of a release should be identified here.
 files: $(OUT)/$(NAME).sch $(OUT)/$(NAME).pcb $(OUT)/Makefile
@@ -127,12 +109,6 @@ files: $(OUT)/$(NAME).sch $(OUT)/$(NAME).pcb $(OUT)/Makefile
 dir: $(OUT)/fp $(OUT)/sym 
 
 release: $(RELEASE)
-
-%.gbr: $(PCB)/$(NAME).pcb
-	pcb -x gerber --fab-author "$(AUTHOR) $(EMAIL)" --gerberfile $(GERBER)/$(NAME) $<
-
-%.cnc: $(PCB)/$(NAME).pcb
-	pcb -x gerber --fab-author "$(AUTHOR) $(EMAIL)" --gerberfile $(GERBER)/$(NAME) $<
 
 
 $(OUT)/$(NAME)-bom.tsv: $(SCH)/$(NAME).sch

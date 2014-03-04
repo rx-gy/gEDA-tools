@@ -42,7 +42,7 @@ project-dir/release/img
 project-dir/release/gerber
 ```
 
-# Quick Start:
+## Quick Start:
 
 1. Copy this directory and all contents to desired location.
 

@@ -69,6 +69,7 @@ project-dir/release/gerber
 4. Set up git:
 
     ```shell
+    mv gitignore .gitignore
     git init
     git add *
     git commit -am 'initial commit'

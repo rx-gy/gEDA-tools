@@ -45,7 +45,6 @@ The tools also assume you are using a git repository to track your files.
 Quick Start:
 
 1. Copy this directory and all contents to desired location.
-
 ```shell
 git clone https://github.com/nixotic/gEDA-tools
 mkdir projectName
@@ -57,16 +56,13 @@ cd projectName
         Set the AUTHOR= and EMAIL= lines.
         Rename sch/example.sch to match the Makefile NAME= setting.
 3. Create the pcb file:
-
 ```shell
 make pcb
 ```
-        Select 'file'->'import schematic'
-        Select <projectname>.sch (as set up in the previous step)
-        Save the pcb file
-
+Select 'file'->'import schematic'
+Select <projectname>.sch (as set up in the previous step)
+Save the pcb file
 4. Set up git:
-
 ```shell
 git init
 git add *
@@ -74,7 +70,6 @@ git commit -am 'initial commit'
 git tag 'release_0.1'
 ```
 5. Start working on your schematic!
-
 ```shell
 make sch
 ```

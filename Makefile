@@ -70,7 +70,7 @@ VER:=
 commit: .git/COMMIT_EDITMSG
 	@echo $(COMMITFILES)
 	$(UPDATECMD)
-	$(if $(UPDATECMD), git commit -m "$(UPDATEMSG)" $(COMMITFILES))
+	$(if $(UPDATECMD), git commit -m "$(UPDATEMSG) ${MESSAGE}" $(COMMITFILES))
 
 .git/COMMIT_EDITMSG: $(SCHFILES)
 
